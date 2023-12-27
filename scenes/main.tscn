@@ -1597,7 +1597,7 @@ sources/0 = SubResource("TileSetAtlasSource_kjeqj")
 
 [node name="GameCamera" parent="." instance=ExtResource("1_b5do3")]
 position = Vector2(1, 0)
-zoom = Vector2(3, 3)
+zoom = Vector2(5, 5)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(5, 0)
@@ -1608,3 +1608,5 @@ layer_0/tile_data = PackedInt32Array(65536, 262144, 17, 0, 262144, 17, -65536, 2
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("1_033kp")]
+
+[node name="ForegroundLayer" type="Node" parent="." groups=["foreground_layer"]]
