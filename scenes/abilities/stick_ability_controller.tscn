@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bbjylc1kr2lew"]
 
-[ext_resource type="Script" path="res://StickAbilityController.gd" id="1_kli4v"]
+[ext_resource type="Script" path="res://scenes/abilities/StickAbilityController.gd" id="1_kli4v"]
 
 [node name="StickAbilityController" type="Node"]
 script = ExtResource("1_kli4v")

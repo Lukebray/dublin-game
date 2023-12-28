@@ -18,21 +18,20 @@ script = ExtResource("1_ihw7q")
 max_speed = 100
 acceleration = 25.0
 
+[node name="StickAbility" parent="." instance=ExtResource("4_67aor")]
+z_index = 1
+position = Vector2(-6, -6)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = ExtResource("3_r6tq7")
 
-[node name="StickAbility" parent="." instance=ExtResource("4_67aor")]
-position = Vector2(-5, -5)
-
 [node name="CollisionArea2D" type="Area2D" parent="."]
-visible = false
 position = Vector2(0, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
 shape = SubResource("CircleShape2D_ch5fu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_k8602")

@@ -13,6 +13,11 @@ func _process(_delta):
 	var direction = movement_vector.normalized()
 	velocity_component.accelerate_in_direction(direction)
 	velocity_component.move(self)
+	$StickAbility.look_at(get_global_mouse_position().rotated(PI/2))
+	
+	if Input.is_action_just_pressed("attack"):
+		print("attack")
+		#stick_ability.get_node("AnimationPlayer").play("hit")
 
 
 func get_movement_vector():
@@ -20,3 +25,4 @@ func get_movement_vector():
 	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	
 	return Vector2(x_movement, y_movement)
+
