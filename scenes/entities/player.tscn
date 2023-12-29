@@ -5,18 +5,25 @@
 [ext_resource type="Texture2D" uid="uid://da1g8plaane3e" path="res://resources/art/player/p_front.png" id="3_60ew3"]
 [ext_resource type="PackedScene" uid="uid://bidxmim27yn0q" path="res://scenes/abilities/stick_ability.tscn" id="4_kvobp"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ch5fu"]
-radius = 6.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_k8602"]
 radius = 6.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ch5fu"]
+radius = 6.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 0
+motion_mode = 1
 script = ExtResource("1_5garl")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_qlp18")]
 max_speed = 100
 acceleration = 25.0
+
+[node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_k8602")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -25,14 +32,12 @@ texture = ExtResource("3_60ew3")
 [node name="StickAbility" parent="." instance=ExtResource("4_kvobp")]
 position = Vector2(-5, -5)
 
-[node name="CollisionArea2D" type="Area2D" parent="."]
-visible = false
+[node name="CollisionAreaForEnemies" type="Area2D" parent="."]
 position = Vector2(0, -6)
+collision_layer = 0
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionAreaForEnemies"]
 shape = SubResource("CircleShape2D_ch5fu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -6)
-shape = SubResource("CircleShape2D_k8602")
+[connection signal="body_entered" from="CollisionAreaForEnemies" to="." method="_on_collision_area_for_enemies_body_entered"]

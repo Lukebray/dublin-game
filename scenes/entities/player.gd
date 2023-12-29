@@ -7,12 +7,11 @@ var base_speed = 0
 var stick_animation_player : AnimationPlayer
 
 func _ready():
-	stick_animation_player = stick_ability.get_node("AnimationPlayer")
+	stick_animation_player = stick_ability.get_node("RigidBody2D").get_node("AnimationPlayer")
 	base_speed = velocity_component.max_speed
 
 
 func _process(_delta):
-	
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
 	velocity_component.accelerate_in_direction(direction)
@@ -28,3 +27,7 @@ func get_movement_vector():
 	
 	return Vector2(x_movement, y_movement)
 
+
+
+func _on_collision_area_for_enemies_body_entered(body):
+	print("ow!")
