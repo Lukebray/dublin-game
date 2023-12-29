@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://ds2q2s47pbn31"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_ihw7q"]
-[ext_resource type="PackedScene" uid="uid://b135ehplgxbf6" path="res://scenes/components/velocity_component.tscn" id="2_ab3wb"]
-[ext_resource type="Texture2D" uid="uid://da1g8plaane3e" path="res://resources/art/player/p_front.png" id="3_r6tq7"]
-[ext_resource type="PackedScene" uid="uid://bidxmim27yn0q" path="res://scenes/abilities/stick_ability.tscn" id="4_67aor"]
+[ext_resource type="Script" path="res://scenes/entities/player.gd" id="1_5garl"]
+[ext_resource type="PackedScene" uid="uid://b135ehplgxbf6" path="res://scenes/components/velocity_component.tscn" id="2_qlp18"]
+[ext_resource type="Texture2D" uid="uid://da1g8plaane3e" path="res://resources/art/player/p_front.png" id="3_60ew3"]
+[ext_resource type="PackedScene" uid="uid://bidxmim27yn0q" path="res://scenes/abilities/stick_ability.tscn" id="4_kvobp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ch5fu"]
 radius = 6.0
@@ -12,17 +12,17 @@ radius = 6.0
 radius = 6.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-script = ExtResource("1_ihw7q")
+script = ExtResource("1_5garl")
 
-[node name="VelocityComponent" parent="." instance=ExtResource("2_ab3wb")]
+[node name="VelocityComponent" parent="." instance=ExtResource("2_qlp18")]
 max_speed = 100
 acceleration = 25.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
-texture = ExtResource("3_r6tq7")
+texture = ExtResource("3_60ew3")
 
-[node name="StickAbility" parent="." instance=ExtResource("4_67aor")]
+[node name="StickAbility" parent="." instance=ExtResource("4_kvobp")]
 position = Vector2(-5, -5)
 
 [node name="CollisionArea2D" type="Area2D" parent="."]

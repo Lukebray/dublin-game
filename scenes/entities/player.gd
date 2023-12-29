@@ -1,23 +1,25 @@
 extends CharacterBody2D
 
 @onready var velocity_component = $VelocityComponent as VelocityComponent
+@onready var stick_ability = $StickAbility
 
 var base_speed = 0
+var stick_animation_player : AnimationPlayer
 
 func _ready():
+	stick_animation_player = stick_ability.get_node("AnimationPlayer")
 	base_speed = velocity_component.max_speed
 
 
 func _process(_delta):
+	
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
 	velocity_component.accelerate_in_direction(direction)
 	velocity_component.move(self)
-	$StickAbility.look_at(get_global_mouse_position().rotated(PI/2))
 	
 	if Input.is_action_just_pressed("attack"):
-		print("attack")
-		#stick_ability.get_node("AnimationPlayer").play("hit")
+		stick_animation_player.play("swing")
 
 
 func get_movement_vector():
