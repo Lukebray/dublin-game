@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://k82433b33b4b"]
+[gd_scene load_steps=7 format=3 uid="uid://k82433b33b4b"]
 
 [ext_resource type="Script" path="res://scenes/entities/enemy.gd" id="1_6akwp"]
 [ext_resource type="Texture2D" uid="uid://dtexsigfk6uau" path="res://zoimbie1_hold.png" id="2_c01gb"]
+[ext_resource type="PackedScene" uid="uid://b135ehplgxbf6" path="res://scenes/components/velocity_component.tscn" id="2_cxa1p"]
 [ext_resource type="PackedScene" uid="uid://btkh4nyeg6wak" path="res://scenes/components/hurtbox_component.tscn" id="3_etorb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7adxd"]
@@ -15,6 +16,9 @@ collision_layer = 8
 collision_mask = 32
 motion_mode = 1
 script = ExtResource("1_6akwp")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_cxa1p")]
+max_speed = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

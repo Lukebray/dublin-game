@@ -29,8 +29,11 @@ shape = SubResource("CircleShape2D_k8602")
 position = Vector2(0, -8)
 texture = ExtResource("3_60ew3")
 
-[node name="StickAbility" parent="." instance=ExtResource("4_kvobp")]
+[node name="Weapon" type="Node2D" parent="."]
+visible = false
 position = Vector2(-5, -5)
+
+[node name="StickAbility" parent="Weapon" instance=ExtResource("4_kvobp")]
 
 [node name="CollisionAreaForEnemies" type="Area2D" parent="."]
 position = Vector2(0, -6)

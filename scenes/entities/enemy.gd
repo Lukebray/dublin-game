@@ -1,17 +1,18 @@
 extends CharacterBody2D
 
-@export var acceleration : float = 1
-@export var knockback_strength : float = 50
+@onready var velocity_component = $VelocityComponent as VelocityComponent
+
+@export var knockback_strength : float = 500
 
 
 func _process(delta):
-	velocity = velocity.lerp(Vector2.ZERO, 1 - exp(-acceleration * get_process_delta_time()))
+	velocity_component.accelerate_to_player()
+	velocity_component.move(self)
+
+
+func _on_hurtbox_component_hit(player_velocity, weapon_angle):
+	#var perpendicular_direction = Vector2(cos(weapon_angle), sin(weapon_angle))
+	velocity = -velocity.normalized() * knockback_strength * velocity_component.acceleration
 	move_and_slide()
-
-
-func _on_hurtbox_component_hit(weapon_angle):
-	var perpendicular_direction = Vector2(cos(weapon_angle), sin(weapon_angle))
-
-	velocity = perpendicular_direction * knockback_strength * acceleration
 
 
